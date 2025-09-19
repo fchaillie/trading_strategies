@@ -1,7 +1,8 @@
 numpy
 pandas
+scikit-learn
+xgboost
+tensorflow
 matplotlib
 plotly
-scikit-learn>=1.3
-xgboost
 pyarrow

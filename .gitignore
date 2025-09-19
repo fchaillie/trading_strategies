@@ -1,57 +1,16 @@
-# ===========================
-# Python general
-# ===========================
+# Python
 __pycache__/
-*.py[cod]
-*.so
-*.pyd
+*.pyc
 
-# ===========================
 # Virtual environments
-# ===========================
 .venv/
-trading_env/
+env/
 
-# ===========================
-# Jupyter Notebooks
-# ===========================
+# Data & outputs
+data/
+outputs/
 
-
-# ===========================
-# Logs & configs
-# ===========================
-*.log
-*.tmp
-*.DS_Store
-*.idea/
+# IDE/project files
 .vscode/
-
-# ===========================
-# Data files (large)
-# ===========================
-*.parquet
-*.csv
-*.tsv
-*.h5
-*.pkl
-*.npz
-*.npy
-*.db
-
-# ===========================
-# Model binaries / artifacts
-# ===========================
-*.pt
-*.pth
-*.onnx
-*.joblib
-*.sav
-*.model
-*.ckpt
-
-# ===========================
-# Build / packaging
-# ===========================
-build/
-dist/
-*.egg-info/
+.idea/
+.DS_Store

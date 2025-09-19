@@ -4,7 +4,7 @@
 This project demonstrates **machine learning for financial time series prediction**.  
 We forecast whether the **H-th bar forward closes higher** than the current bar, and backtest the strategy at **tick level** with stop-loss and trailing-stop risk management.
 
-The repo showcases **5 models**:
+We evaluate **five models** side by side:
 
 1. 🟢 **Random Forest (RF)** – classic ensemble baseline  
 2. 🟠 **XGBoost (XGB)** – gradient boosting for nonlinear patterns  
@@ -23,25 +23,6 @@ The repo showcases **5 models**:
 
 ---
 
-## 📂 Project Structure
-```
-trading-strategy-5models/
-├── src/
-│   ├── config.py          # default params (STOP_LOSS, TRAILING_STOP, etc.)
-│   ├── data_utils.py      # build dataset, mask bars, sequence creation
-│   ├── backtest.py        # tick-level backtest logic
-│   ├── models.py          # RF, XGB, CNN, LSTM, CNN-LSTM
-│   ├── metrics.py         # classification metrics & max drawdown
-│   └── visualization.py   # plotting utilities
-├── scripts/
-│   └── run_main.py        # trains & tests all 5 models
-├── README.md
-├── requirements.txt
-└── .gitignore
-```
-
----
-
 ## ⚙️ Quickstart
 ```bash
 # 1. Create and activate virtual environment
@@ -54,23 +35,76 @@ pip install -r requirements.txt
 python scripts/run_main.py --parquet MBT_bars_5m_quant_PARIS_tz.parquet --H 10
 ```
 
+Outputs are saved in the `outputs/` folder:
+- Trade logs (`trade_log_{model}_H{H}.csv`)  
+- Probabilities (`pred_{model}_H{H}.csv`)  
+- Equity curves (`equity_{model}_H{H}.png`)  
+- Feature importances (`feat_importance_{model}.png`)  
+- Training histories (`history_{model}.png`)  
+- Summary (`results_summary_H{H}.csv`)  
+
 ---
 
-## 📊 Example Outputs
+## 📊 Results by Model
 
-When you run the pipeline, you’ll find results in `outputs/`:
+### 1. Random Forest (RF)
+- Captures nonlinear interactions between features.
+- Provides **feature importances** for interpretability.
+- Baseline performance for comparison.
 
-- **Equity Curves**  
-  ![Equity Curve](outputs/equity_rf_H10.png)
+📈 *Equity Curve RF*  
+👉 *(Insert screenshot here)*
 
-- **Feature Importances (RF/XGB)**  
-  ![Feature Importance](outputs/feat_importance_rf.png)
+📊 *Feature Importance RF*  
+👉 *(Insert screenshot here)*
 
-- **Training History (CNN/LSTM/Hybrid)**  
-  ![Training History](outputs/history_lstm.png)
+---
 
-- **Performance Summary**  
-  `results_summary_H10.csv`  
+### 2. XGBoost (XGB)
+- Strong gradient boosting method for tabular financial data.
+- Often outperforms Random Forest with proper tuning.
+
+📈 *Equity Curve XGB*  
+👉 *(Insert screenshot here)*
+
+📊 *Feature Importance XGB*  
+👉 *(Insert screenshot here)*
+
+---
+
+### 3. Convolutional Neural Network (CNN)
+- Learns **local patterns** from sliding windows of OHLCV + features.
+- Good for detecting micro-structures or breakouts.
+
+📈 *Equity Curve CNN*  
+👉 *(Insert screenshot here)*
+
+📉 *Training History CNN*  
+👉 *(Insert screenshot here)*
+
+---
+
+### 4. Long Short-Term Memory Network (LSTM)
+- Sequence model capturing **temporal dependencies**.
+- Useful for trend continuation or reversal detection.
+
+📈 *Equity Curve LSTM*  
+👉 *(Insert screenshot here)*
+
+📉 *Training History LSTM*  
+👉 *(Insert screenshot here)*
+
+---
+
+### 5. CNN-LSTM Hybrid
+- Combines CNN (local feature extraction) + LSTM (sequence memory).
+- Often the strongest performer on sequential trading data.
+
+📈 *Equity Curve CNN-LSTM*  
+👉 *(Insert screenshot here)*
+
+📉 *Training History CNN-LSTM*  
+👉 *(Insert screenshot here)*
 
 ---
 
